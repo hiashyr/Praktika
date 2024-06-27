@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>563</width>
+    <width>611</width>
     <height>600</height>
    </rect>
   </property>
@@ -19,8 +19,8 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>571</width>
-      <height>311</height>
+      <width>611</width>
+      <height>481</height>
      </rect>
     </property>
     <property name="font">
@@ -28,9 +28,21 @@
       <pointsize>10</pointsize>
      </font>
     </property>
+    <attribute name="horizontalHeaderVisible">
+     <bool>true</bool>
+    </attribute>
+    <attribute name="horizontalHeaderCascadingSectionResizes">
+     <bool>false</bool>
+    </attribute>
+    <attribute name="verticalHeaderHighlightSections">
+     <bool>false</bool>
+    </attribute>
+    <attribute name="verticalHeaderShowSortIndicator" stdset="0">
+     <bool>false</bool>
+    </attribute>
     <row>
      <property name="text">
-      <string> </string>
+      <string/>
      </property>
      <property name="textAlignment">
       <set>AlignCenter</set>
@@ -38,27 +50,27 @@
     </row>
     <row>
      <property name="text">
-      <string> </string>
+      <string/>
      </property>
     </row>
     <row>
      <property name="text">
-      <string> </string>
+      <string/>
      </property>
     </row>
     <row>
      <property name="text">
-      <string> </string>
+      <string/>
      </property>
     </row>
     <row>
      <property name="text">
-      <string> </string>
+      <string/>
      </property>
     </row>
     <row>
      <property name="text">
-      <string> </string>
+      <string/>
      </property>
     </row>
     <column>
@@ -118,13 +130,32 @@
      </property>
     </column>
    </widget>
+   <widget class="QPushButton" name="pushButton_3">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>350</y>
+      <width>81</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Mongolian Baiti</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Добавить</string>
+    </property>
+   </widget>
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>400</x>
-      <y>240</y>
+      <x>100</x>
+      <y>350</y>
       <width>121</width>
-      <height>41</height>
+      <height>24</height>
      </rect>
     </property>
     <property name="font">
@@ -135,6 +166,63 @@
     </property>
     <property name="text">
      <string>Загрузить данные</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_2">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>350</y>
+      <width>121</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Mongolian Baiti</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Очистить таблицу</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_4">
+    <property name="geometry">
+     <rect>
+      <x>360</x>
+      <y>350</y>
+      <width>101</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Mongolian Baiti</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Удалить строку</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_5">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>350</y>
+      <width>111</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Mongolian Baiti</family>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Редактировать</string>
     </property>
    </widget>
   </widget>

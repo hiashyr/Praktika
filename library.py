@@ -34,7 +34,6 @@ class Grup:
                 s += '\n'
         return s
 
-      
 
 
     def read_data_from_file(self, filename):
@@ -45,9 +44,7 @@ class Grup:
                 if line[-1] == '\n' : line = line[:-1] 
                 parts = line.strip().split(" ")
 
-                self.A[x] = Person(parts[0],parts[1],parts[2], parts[3],  parts[4])
+                self.A[x] = Person(parts[0], parts[1], parts[2], parts[3],  parts[4])
 
                 x += 1
                 self.count += 1
-
-       
