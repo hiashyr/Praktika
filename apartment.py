@@ -6,14 +6,14 @@ import sys
 from library import *
 
 app = QtWidgets.QApplication([])
-win = uic.loadUi("студенты.ui")
+win = uic.loadUi("apartments.ui")
 
 Gr = Grup()
 
 # Начальное количество строк в таблице
 win.tableWidget.setRowCount(0)
 
-
+# Определение функции btnLoadTable
 def btnLoadTable():
     # Очищаем таблицу перед загрузкой новых данных
     win.tableWidget.setRowCount(0)
@@ -46,7 +46,7 @@ def btnLoadTable():
         if isEmpty:
             win.tableWidget.removeRow(row)
 
-
+btnLoadTable()  # Вызов функции для загрузки данных при запуске
 def addNewRow():
     # Получаем текущее количество строк
     rowCount = win.tableWidget.rowCount()
@@ -75,13 +75,12 @@ def clearTable():
 
 
 def deleteRow():
-    # Получаем выбранную строку
     selected_row = win.tableWidget.currentRow()
 
-    # Если строка выбрана
-    if selected_row != -1:
-        # Удаляем строку
-        win.tableWidget.removeRow(selected_row)
+    if selected_row != -1 and selected_row in Gr.A:
+        del Gr.A[selected_row]  # Удаляем запись из Gr.A
+        Gr.count -= 1  # Обновляем Gr.count
+        win.tableWidget.removeRow(selected_row)  # Удаляем строку из таблицы
 
 
 def enableEditing():
@@ -92,19 +91,29 @@ def disableEditing():
     win.tableWidget.setEditTriggers(QtWidgets.QAbstractItemView.NoEditTriggers)
 
 
-# Делаем таблицу нередактируемой изначально
-disableEditing()
+def saveChanges():
+    # Перезаписываем данные из таблицы в файл
+    # НЕ ОЧИЩАЕМ Gr.A: Gr.A = {}
 
-# Подключаем функцию deleteRow к кнопке
-win.pushButton_4.clicked.connect(deleteRow)
+    for row in range(win.tableWidget.rowCount()):
+        # Извлекаем данные из таблицы
+        street = win.tableWidget.item(row, 0).text()
+        house = win.tableWidget.item(row, 1).text()
+        flat = win.tableWidget.item(row, 2).text()
+        rooms = win.tableWidget.item(row, 3).text()
+        floor = win.tableWidget.item(row, 4).text()
+
+        # Добавляем новые данные в список
+        Gr.A[row] = Apartment(street, house, flat, rooms, floor)
+
+    Gr.write_data_to_file("text.txt")  # Сохраняем изменения в файл
 
 win.pushButton.clicked.connect(btnLoadTable)
-win.pushButton_3.clicked.connect(addNewRow)
-# Подключаем функцию clearTable к pushButton_2
 win.pushButton_2.clicked.connect(clearTable)
-
-# Подключаем функцию enableEditing к pushButton_5
+win.pushButton_3.clicked.connect(addNewRow)
+win.pushButton_4.clicked.connect(deleteRow)
 win.pushButton_5.clicked.connect(enableEditing)
+win.pushButton_6.clicked.connect(saveChanges)
 
 win.show()
-sys.exit(app.exec())
+sys.exit(app.exec_())

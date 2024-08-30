@@ -1,4 +1,4 @@
-class Person:
+class Apartment:
     def __init__(self, street, house, flat, rooms, floor):
         self.street = street
         self.house = house
@@ -6,45 +6,26 @@ class Person:
         self.rooms = rooms
         self.floor = floor
 
-    """
-    def getPerson_forTable(self):
-        w = []
-        print(self.fam+' '+self.name+' '+self.otchestvo)
-        x = self.fam+' '+self.name+' '+self.otchestvo
-        w.append(x)
-        w.append(self.year)
-        w.append(self.city)
-        w.append(self.sb_inf)
-        w.append(self.sb.math)
-        print(w) 
-        return w
-    """
 
 class Grup:
     def __init__(self):
-        self.A = {}
-        self.count = 0
-
-    def __str__(self):
-        s = ''
-        for x in range(len(self.A)):  
-            if x in self.A: 
-                s += f'Person {x+1}:\n'
-                s += str(self.A[x])
-                s += '\n'
-        return s
-
-
+        self.A = {}  # Словарь для хранения данных об квартирах
+        self.count = 0  # Количество квартир
 
     def read_data_from_file(self, filename):
         self.A = {}
-        x = 0
+        self.count = 0
         with open(filename, "r", encoding="utf-8") as file:
             for line in file:
-                if line[-1] == '\n' : line = line[:-1] 
-                parts = line.strip().split(" ")
+                parts = line.strip().split()  # Разделяем по пробелам
+                if len(parts) == 5:
+                    street, house, flat, rooms, floor = parts
+                    self.A[self.count] = Apartment(street, house, flat, rooms, floor)
+                    self.count += 1
+                else:
+                    print(f"Некорректные данные в строке: {line.strip()}")
 
-                self.A[x] = Person(parts[0], parts[1], parts[2], parts[3],  parts[4])
-
-                x += 1
-                self.count += 1
+    def write_data_to_file(self, filename):
+        with open(filename, "w", encoding="utf-8") as file:
+            for key, apartment in self.A.items():  # Итерация по ключам словаря
+                file.write(f"{apartment.street} {apartment.house} {apartment.flat} {apartment.rooms} {apartment.floor}\n")
